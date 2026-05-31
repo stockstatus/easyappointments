@@ -21,8 +21,9 @@ root {
    -------------------------------------------------------------------- */
 
 #header {
-    background-color: #429a82;
-    box-shadow: none;
+    background-color: #2C1A0E;
+    box-shadow: 0 2px 8px rgba(44, 26, 14, 0.3);
+    border-bottom: 1px solid #C9963C;
     border-radius: 0;
     padding: 0;
 }
@@ -34,7 +35,7 @@ root {
 
 #header #header-logo small {
     font-size: 10.5px;
-    color: #004c39;
+    color: #C4A882;
 }
 
 #header #header-logo img {
@@ -67,11 +68,12 @@ root {
 }
 
 #header #header-menu .nav-item:hover {
-    background: #3a8873;
+    background: #5C3A1E;
 }
 
 #header #header-menu .nav-item.active {
-    background: #2e6a5b;
+    background: #3d2510;
+    border-bottom: 2px solid #C9963C;
 }
 
 #footer {
@@ -136,7 +138,8 @@ body .modal .modal-title {
 
 body .modal-header {
     padding: 20px 15px;
-    background: #429a82;
+    background: #2C1A0E;
+    border-bottom: 1px solid #C9963C;
 }
 
 body .modal-header h3 {
@@ -242,8 +245,8 @@ body legend {
 }
 
 .backend-page .filter-records .results .entry.selected {
-    background-color: #f4f4f4;
-    border-right: 5px solid #429a82;
+    background-color: #FDF6EC;
+    border-right: 5px solid #C9963C;
 }
 
 .backend-page .filter-records .results hr {
@@ -501,7 +504,7 @@ body legend {
 }
 
 #existing-customers-list div:hover {
-    background: #429a82;
+    background: #C9963C;
     font-weight: bold;
     color: #fff;
     cursor: pointer;
@@ -1018,3 +1021,453 @@ body .form-horizontal .controls {
 .status-list-item {
     max-width: 400px;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   MASÁŽE KARIN — DARK THEME OVERRIDE
+   ═══════════════════════════════════════════════════════════ */
+
+/* Premenné */
+:root {
+    --k-bg:           #2C1A0E;
+    --k-bg-mid:       #3d2510;
+    --k-bg-light:     #4a2e18;
+    --k-gold:         #C9963C;
+    --k-gold-dark:    #A07830;
+    --k-gold-pale:    #F5E6C4;
+    --k-text:         #F5E6C4;
+    --k-text-muted:   #C4A882;
+    --k-border:       rgba(201, 150, 60, 0.25);
+    --k-border-solid: #5C3A1E;
+}
+
+/* Body & layout */
+body {
+    background-color: var(--k-bg) !important;
+    color: var(--k-text) !important;
+}
+
+main {
+    background-color: var(--k-bg);
+}
+
+/* Toolbar (filter bar pod navbarom) */
+#calendar-page #calendar-toolbar,
+.backend-page > .container-fluid > .row:first-child {
+    background-color: var(--k-bg-mid) !important;
+    color: var(--k-text);
+}
+
+/* Filter toolbar (lišta s dropdownom "Vše") */
+.bg-dark, [class*="bg-dark"] {
+    background-color: var(--k-bg-mid) !important;
+}
+
+/* Kalendár toolbar */
+#calendar-page #calendar-toolbar {
+    background: var(--k-bg-mid) !important;
+    border-bottom: 1px solid var(--k-border);
+    color: var(--k-text);
+}
+
+/* Karty / panely */
+.card {
+    background-color: var(--k-bg-mid) !important;
+    border: 1px solid var(--k-border) !important;
+    color: var(--k-text) !important;
+}
+
+.card-header {
+    background-color: var(--k-bg-light) !important;
+    border-bottom: 1px solid var(--k-border) !important;
+    color: var(--k-gold-pale) !important;
+}
+
+/* Tabuľky */
+table, .table {
+    color: var(--k-text) !important;
+    border-color: var(--k-border-solid) !important;
+}
+
+.table > :not(caption) > * > * {
+    background-color: transparent !important;
+    color: var(--k-text) !important;
+    border-color: var(--k-border-solid) !important;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255,255,255,0.03) !important;
+}
+
+.table > thead > tr > th {
+    background-color: var(--k-bg-light) !important;
+    color: var(--k-gold) !important;
+    border-color: var(--k-border-solid) !important;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+}
+
+tr:hover > td {
+    background-color: rgba(201, 150, 60, 0.05) !important;
+}
+
+/* Forms & Inputs */
+.form-control, .form-select {
+    background-color: var(--k-bg-light) !important;
+    border: 1px solid var(--k-border-solid) !important;
+    color: var(--k-text) !important;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--k-bg-light) !important;
+    border-color: var(--k-gold) !important;
+    color: var(--k-text) !important;
+    box-shadow: 0 0 0 0.2rem rgba(201, 150, 60, 0.2) !important;
+}
+
+.form-control::placeholder {
+    color: var(--k-text-muted) !important;
+    opacity: 0.6;
+}
+
+.form-label, label {
+    color: var(--k-text-muted) !important;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+
+legend {
+    color: var(--k-gold) !important;
+}
+
+/* Disabled inputs (read-only zobrazenie) */
+.backend-page .form-control:disabled,
+.backend-page .form-control[readonly],
+.backend-page .form-select:disabled {
+    background-color: transparent !important;
+    color: var(--k-text) !important;
+    border-color: transparent !important;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--k-gold) !important;
+    border-color: var(--k-gold-dark) !important;
+    color: var(--k-bg) !important;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: var(--k-gold-dark) !important;
+    border-color: var(--k-gold-dark) !important;
+}
+
+.btn-secondary {
+    background-color: var(--k-bg-light) !important;
+    border-color: var(--k-border-solid) !important;
+    color: var(--k-text) !important;
+}
+
+.btn-secondary:hover {
+    background-color: var(--k-bg-mid) !important;
+    border-color: var(--k-gold) !important;
+    color: var(--k-gold) !important;
+}
+
+.btn-danger {
+    background-color: #8B2020 !important;
+    border-color: #6B1515 !important;
+}
+
+.btn-outline-secondary {
+    border-color: var(--k-border-solid) !important;
+    color: var(--k-text-muted) !important;
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--k-bg-light) !important;
+    color: var(--k-text) !important;
+}
+
+/* Links */
+a {
+    color: var(--k-gold) !important;
+}
+
+a:hover {
+    color: var(--k-gold-pale) !important;
+}
+
+/* Filter sidebar (zákazníci, služby...) */
+.backend-page .filter-records {
+    background-color: var(--k-bg-mid);
+    border: 1px solid var(--k-border);
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.backend-page .filter-records .results .entry {
+    color: var(--k-text);
+    border-bottom: 1px solid var(--k-border);
+}
+
+.backend-page .filter-records .results .entry:hover:not(.selected) {
+    background-color: rgba(201, 150, 60, 0.08);
+}
+
+.backend-page .filter-records .results .entry.selected {
+    background-color: rgba(201, 150, 60, 0.12);
+    border-right: 4px solid var(--k-gold);
+    color: var(--k-gold-pale);
+}
+
+/* Dropdowns */
+.dropdown-menu {
+    background-color: var(--k-bg-mid) !important;
+    border: 1px solid var(--k-border) !important;
+}
+
+.dropdown-item {
+    color: var(--k-text) !important;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(201, 150, 60, 0.1) !important;
+    color: var(--k-gold-pale) !important;
+}
+
+.dropdown-divider {
+    border-color: var(--k-border-solid) !important;
+}
+
+/* Modals */
+.modal-content {
+    background-color: var(--k-bg-mid) !important;
+    border: 1px solid var(--k-border) !important;
+    color: var(--k-text) !important;
+}
+
+body .modal-header {
+    background: var(--k-bg) !important;
+    border-bottom: 1px solid var(--k-gold) !important;
+}
+
+.modal-footer {
+    background-color: var(--k-bg) !important;
+    border-top: 1px solid var(--k-border) !important;
+}
+
+.modal-title {
+    color: var(--k-gold-pale) !important;
+}
+
+/* Kalendár */
+#calendar .fc-col-header-cell {
+    background-color: var(--k-bg-light) !important;
+    border-color: var(--k-border-solid) !important;
+}
+
+#calendar .fc-col-header-cell-cushion {
+    color: var(--k-gold) !important;
+}
+
+.fc-theme-standard td, .fc-theme-standard th {
+    border-color: var(--k-border-solid) !important;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+    border-color: var(--k-border-solid) !important;
+}
+
+.fc-daygrid-day {
+    background-color: var(--k-bg-mid) !important;
+}
+
+.fc-daygrid-day.fc-day-today {
+    background-color: rgba(201, 150, 60, 0.08) !important;
+}
+
+.fc-daygrid-day-number {
+    color: var(--k-text-muted) !important;
+}
+
+#calendar .fc-event {
+    background-color: var(--k-gold-dark) !important;
+    border-color: var(--k-gold) !important;
+    color: var(--k-bg) !important;
+}
+
+.fc-toolbar-title {
+    color: var(--k-text) !important;
+}
+
+.fc-button {
+    background-color: var(--k-bg-light) !important;
+    border-color: var(--k-border-solid) !important;
+    color: var(--k-text) !important;
+}
+
+.fc-button:hover, .fc-button-active {
+    background-color: var(--k-gold) !important;
+    border-color: var(--k-gold-dark) !important;
+    color: var(--k-bg) !important;
+}
+
+.fc-button-primary:not(:disabled).fc-button-active {
+    background-color: var(--k-gold) !important;
+    border-color: var(--k-gold-dark) !important;
+    color: var(--k-bg) !important;
+}
+
+/* Select2 */
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple {
+    background-color: var(--k-bg-light) !important;
+    border-color: var(--k-border-solid) !important;
+    color: var(--k-text) !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: var(--k-text) !important;
+}
+
+.select2-dropdown {
+    background-color: var(--k-bg-mid) !important;
+    border-color: var(--k-border) !important;
+}
+
+.select2-container--default .select2-results__option {
+    color: var(--k-text) !important;
+}
+
+.select2-container--default .select2-results__option--highlighted {
+    background-color: rgba(201, 150, 60, 0.15) !important;
+    color: var(--k-gold-pale) !important;
+}
+
+/* Flatpickr (datepicker) */
+.flatpickr-calendar {
+    background-color: var(--k-bg-mid) !important;
+    border: 1px solid var(--k-border) !important;
+    color: var(--k-text) !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4) !important;
+}
+
+.flatpickr-month, .flatpickr-weekdays {
+    background-color: var(--k-bg) !important;
+    color: var(--k-gold) !important;
+}
+
+.flatpickr-day {
+    color: var(--k-text) !important;
+}
+
+.flatpickr-day:hover {
+    background-color: rgba(201, 150, 60, 0.15) !important;
+    border-color: var(--k-gold) !important;
+}
+
+.flatpickr-day.selected {
+    background-color: var(--k-gold) !important;
+    border-color: var(--k-gold-dark) !important;
+    color: var(--k-bg) !important;
+}
+
+/* Notifikácie */
+#notification .alert {
+    background-color: var(--k-bg-mid) !important;
+    color: var(--k-gold-pale) !important;
+    border: 1px solid var(--k-border) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
+}
+
+/* Footer — skrytý */
+#footer {
+    display: none !important;
+}
+
+/* Headings — musíme prebiť page-specific selektory */
+h1, h2, h3, h4, h5, h6,
+#customers-page h2, #services-page h2, #users-page h2,
+#settings-page h2, #providers-page h2, #calendar-page h2,
+.backend-page h2, .backend-page h3, .backend-page h4,
+.record-details h3, .record-details h4 {
+    color: var(--k-gold-pale) !important;
+}
+
+/* Texty / labely v zozname a formulároch */
+.form-label, label,
+.backend-page .filter-records p,
+.backend-page .filter-records small {
+    color: var(--k-text) !important;
+}
+
+/* Subtexty (email, telefón) v liste zákazníkov/služieb */
+.backend-page .filter-records .entry small,
+.backend-page .filter-records .entry p,
+.filter-records .results .entry * {
+    color: var(--k-text-muted) !important;
+}
+
+/* Badges */
+.badge.bg-primary {
+    background-color: var(--k-gold) !important;
+    color: var(--k-bg) !important;
+}
+
+/* Nav pills (tabs v nastaveniach) */
+.nav-pills .nav-link {
+    color: var(--k-text-muted) !important;
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--k-gold) !important;
+    color: var(--k-bg) !important;
+}
+
+/* Checkbox / toggle */
+.form-check-input:checked {
+    background-color: var(--k-gold) !important;
+    border-color: var(--k-gold-dark) !important;
+}
+
+/* Salon názov v hlavičke */
+#header #salon-name {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #F5E6C4;
+    letter-spacing: 0.12em;
+    font-style: italic;
+}
+
+/* Tippy tooltips */
+.tippy-box {
+    background-color: var(--k-bg-mid) !important;
+    border: 1px solid var(--k-border) !important;
+    color: var(--k-text) !important;
+}
+
+.tippy-arrow {
+    color: var(--k-bg-mid) !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--k-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--k-border-solid);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--k-gold-dark);
+}
+
