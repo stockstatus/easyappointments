@@ -38,7 +38,11 @@ $lang['appointment_removed_from_schedule'] = 'Následující schůzka byla odstr
 $lang['appointment_details_was_sent_to_you'] = 'Byl vám odeslán email s informacemi o schůzce.';
 $lang['add_to_google_calendar'] = 'Přidat do Kalendáře Google';
 $lang['appointment_booked'] = 'Vaše schůzka byla úspěšně rezervována.';
-$lang['thank_you_for_appointment'] = 'Děkujeme za vaši rezervaci schůzky u nás. Níže jsou zobrazeny informace o schůzce. Změny můžete provést kliknutím na odkaz na schůzku.';
+// Masáže Karin — pôvodný text končil vetou "Změny můžete provést kliknutím
+// na odkaz na schůzku." Zákazníčka cez ten odkaz rezerváciu zrušiť nevie,
+// takže sľuboval niečo, čo nefunguje. Zrušenie sa rieši telefonicky —
+// kontakt je v šablóne appointment_saved_email.php.
+$lang['thank_you_for_appointment'] = 'Děkujeme za vaši rezervaci. Níže najdete její podrobnosti.';
 $lang['appointment_details_title'] = 'Informace o schůzce';
 $lang['customer_details_title'] = 'Informace o zákazníkovi';
 $lang['service'] = 'Služba';

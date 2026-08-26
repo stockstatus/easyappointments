@@ -1,0 +1,36 @@
+# ═══════════════════════════════════════════════════════════
+# Masáže Karin — vlastné úpravy nad odladeným produkčným image
+#
+# Zámerne NEBUILDUJE od alextselegidis/easyappointments:latest.
+# Aktuálny upstream latest má načítané dva Apache MPM moduly
+# ("More than one MPM loaded") a Apache s ním vôbec neštartuje.
+#
+# Základom je presne ten image, ktorý na produkcii funguje —
+# pripnutý cez digest, aby bol build reprodukovateľný.
+# Prekrývajú sa len konkrétne opravené súbory.
+#
+# Build:
+#   docker buildx build --platform linux/amd64 -f Dockerfile.overrides \
+#     -t ghcr.io/stockstatus/ea-karin-railway:latest --push .
+# ═══════════════════════════════════════════════════════════
+
+FROM ghcr.io/stockstatus/ea-karin-railway@sha256:dbe0092022d241ac4ff241e62eb6bc2937388324ab908fab25166bab60e46f13
+
+# Skompilované CSS (karin téma) a backend_header.php sú v tomto základe
+# už zapečené — pridal ich pôvodný build cez Dockerfile. Prekrývajú sa
+# preto len súbory, ktoré vznikli až po ňom.
+
+# E-mailová konfigurácia čítaná z MAIL_* env premenných.
+# Base image negeneruje email.php cez entrypoint, preto ostal
+# default 'mail' → PHP mail() → "sendmail: not found".
+COPY application/config/email.php /var/www/html/application/config/email.php
+
+# Ochranná pauza medzi rezerváciami (APPOINTMENT_PADDING_MINUTES).
+# EA nemá buffer medzi termínmi — bez tohto nadväzuje ďalší
+# voľný slot presne na koniec predchádzajúcej masáže.
+COPY application/libraries/Availability.php /var/www/html/application/libraries/Availability.php
+
+# Potvrdzovací e-mail: zákazníčke telefón na zrušenie namiesto odkazu,
+# ktorým sa rezervácia zrušiť nedá. Personál si odkaz ponecháva.
+COPY application/views/emails/appointment_saved_email.php /var/www/html/application/views/emails/appointment_saved_email.php
+COPY application/language/czech/translations_lang.php /var/www/html/application/language/czech/translations_lang.php

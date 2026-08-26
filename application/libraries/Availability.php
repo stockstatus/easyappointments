@@ -448,6 +448,20 @@ class Availability
         }
 
         // Break the empty periods with the reserved appointments.
+
+        // Masáže Karin — ochranná pauza medzi rezerváciami.
+        // Klientka nemá prísť, kým predchádzajúca masáž ešte dobieha, a Karin
+        // potrebuje čas na prípravu miestnosti. Rezervácia sa preto pri výpočte
+        // dostupnosti tvári širšia, než v skutočnosti je — samotný termín
+        // v databáze aj v potvrdení klientky zostáva nedotknutý.
+        //
+        // Rozširuje sa na OBE strany zámerne: keby sa predĺžil len koniec,
+        // pauza by vznikla len po rezervácii a niekto by si mohol rezervovať
+        // termín končiaci presne v okamihu, keď ďalšia masáž začína.
+        //
+        // 0 (alebo nenastavené) = správanie pôvodného EA.
+        $padding_minutes = (int) (getenv('APPOINTMENT_PADDING_MINUTES') ?: 0);
+
         foreach ($appointments as $appointment) {
             foreach ($periods as $index => &$period) {
                 $appointment_start = new DateTime($appointment['start_datetime']);
@@ -455,6 +469,12 @@ class Availability
 
                 if ($appointment_start >= $appointment_end) {
                     continue;
+                }
+
+                if ($padding_minutes > 0) {
+                    $padding = new DateInterval('PT' . $padding_minutes . 'M');
+                    $appointment_start->sub($padding);
+                    $appointment_end->add($padding);
                 }
 
                 $period_start = new DateTime($date . ' ' . $period['start']);

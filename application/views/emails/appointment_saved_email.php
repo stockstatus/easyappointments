@@ -168,13 +168,34 @@
             </tr>
         </table>
 
-        <h2>
-            <?= lang('appointment_link_title') ?>
-        </h2>
+<?php
+        // Masáže Karin — zákazníčka nemá cez odkaz reálne ako rezerváciu zrušiť,
+        // preto jej namiesto neho ukážeme telefón. Personál (Karin, admin,
+        // sekretárky) odkaz ponecháva — vedie im rovno do kalendára.
+        //
+        // Rozlíšenie podľa cieľa odkazu: Notifications.php posiela zákazníčke
+        // 'booking/reschedule/...', personálu 'calendar/reschedule/...'.
+        $is_customer_copy = strpos($appointment_link, '/booking/reschedule/') !== false;
+        $salon_phone = getenv('SALON_PHONE') ?: '+420 605 563 321';
+        ?>
 
-        <a href="<?= e($appointment_link) ?>" style="width: 600px;">
-            <?= e($appointment_link) ?>
-        </a>
+        <?php if ($is_customer_copy): ?>
+            <h2>Zrušení rezervace</h2>
+
+            <p style="margin: 0;">
+                Potřebujete termín zrušit nebo přeložit? Zavolejte na
+                <a href="tel:<?= e(str_replace(' ', '', $salon_phone)) ?>"
+                   style="text-decoration: none; font-weight: bold;"><?= e($salon_phone) ?></a>.
+            </p>
+        <?php else: ?>
+            <h2>
+                <?= lang('appointment_link_title') ?>
+            </h2>
+
+            <a href="<?= e($appointment_link) ?>" style="width: 600px;">
+                <?= e($appointment_link) ?>
+            </a>
+        <?php endif; ?>
     </div>
 
     <div id="footer" style="padding: 10px; text-align: center; margin-top: 10px;
