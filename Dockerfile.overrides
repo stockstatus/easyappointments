@@ -20,6 +20,9 @@ FROM ghcr.io/stockstatus/ea-karin-railway@sha256:dbe0092022d241ac4ff241e62eb6bc2
 # už zapečené — pridal ich pôvodný build cez Dockerfile. Prekrývajú sa
 # preto len súbory, ktoré vznikli až po ňom.
 
+# Koreň admin subdomény vedie na prihlásenie, nie na rezervačný formulár.
+COPY application/config/routes.php /var/www/html/application/config/routes.php
+
 # E-mailová konfigurácia čítaná z MAIL_* env premenných.
 # Base image negeneruje email.php cez entrypoint, preto ostal
 # default 'mail' → PHP mail() → "sendmail: not found".

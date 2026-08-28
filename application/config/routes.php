@@ -51,7 +51,16 @@
 
 require_once __DIR__ . '/../helpers/routes_helper.php';
 
-$route['default_controller'] = 'booking';
+// Masáže Karin — koreň vedie na prihlásenie, nie na rezervačný formulár.
+//
+// Táto inštancia beží na admin.karinamasaze.cz a slúži Karin ako
+// administrácia. Klientky rezervujú cez karinamasaze.cz/rezervace,
+// odkiaľ Spring appka odkazuje priamo na /index.php/booking — tá
+// adresa funguje ďalej, mení sa len to, kam vedie samotný koreň.
+//
+// Login::index prihláseného používateľa presmeruje na kalendár,
+// takže Karin uvidí buď prihlásenie, alebo rovno svoje rezervácie.
+$route['default_controller'] = 'login';
 
 $route['404_override'] = '';
 

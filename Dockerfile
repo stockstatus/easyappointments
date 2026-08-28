@@ -62,6 +62,9 @@ COPY application/views/components/backend_header.php /var/www/html/application/v
 # Rovnaká sada ako v Dockerfile.overrides. Pri zmene uprav OBA súbory,
 # inak sa prípadný build od nuly bude správať inak než produkcia.
 
+# Koreň admin subdomény vedie na prihlásenie, nie na rezervačný formulár.
+COPY application/config/routes.php /var/www/html/application/config/routes.php
+
 # E-mailová konfigurácia čítaná z env premenných (MAIL_*).
 # Nezávislá od toho, či base image generuje email.php cez entrypoint.
 COPY application/config/email.php /var/www/html/application/config/email.php
